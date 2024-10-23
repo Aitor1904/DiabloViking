@@ -35,5 +35,11 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    private void LateUpdate()
+    {
+        if (hasHit)
+        {
+            mover.HandleTargetPointSprite(hit.point);
+        }
+    }
 }
