@@ -10,9 +10,19 @@ public class CharacterAnimation : MonoBehaviour
 
     [SerializeField]
     private NavMeshAgent agent;
-
+    [SerializeField]
+    CharacterCombat characterCombat;
+    private void Start()
+    {
+        characterCombat.OnAttack += OnAttack;
+    }
     private void Update()
     {
         animator.SetFloat("Velocity", agent.velocity.magnitude);
+    }
+
+    void OnAttack()
+    {
+        animator.SetTrigger("Attack");
     }
 }
