@@ -8,7 +8,8 @@ public class HealthPotion : Item
     public override void Use()
     {
         base.Use();
-        GameManager.Instance.GetComponent<HealthManager>().ModifyHealth(50);        
+        GameManager.Instance.GetComponent<HealthManager>().ModifyHealth(50);
+        Debug.Log("Test");
     }
     /*public override void Interact()
     {
