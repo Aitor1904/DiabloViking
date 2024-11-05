@@ -32,6 +32,7 @@ public class InventorySlot : MonoBehaviour
     public void RemoveItemFromInventory()
     {
         Inventory.instance.Remove(item);
+        ClearSlot();
     }
 
     public void Use()
@@ -39,6 +40,7 @@ public class InventorySlot : MonoBehaviour
         if (item != null)
         {
             item.Use();
+            RemoveItemFromInventory();
         }
     }
 }

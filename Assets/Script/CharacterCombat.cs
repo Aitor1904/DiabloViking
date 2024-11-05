@@ -17,11 +17,24 @@ public class CharacterCombat : MonoBehaviour
         attackCountdown -= Time.deltaTime;
     }
 
-    public void Attack()
+    public void AttackEnemyToPlayer()
     {
         if(attackCountdown <= 0f)
         {
             attackCountdown = 1 / attackRate;
+
+            GameManager.Instance.GetComponent<HealthManager>().ModifyHealth(-10);
+
+            OnAttack?.Invoke();
+        }
+    }
+
+    public void AttackPlayerToEnemy()
+    {
+        if (attackCountdown <= 0f)
+        {
+            attackCountdown = 1 / attackRate;
+
 
             OnAttack?.Invoke();
         }

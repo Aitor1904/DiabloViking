@@ -41,19 +41,21 @@ public class EnemyAI : MonoBehaviour
         if (playerIsSightRange && playerInAttackRange) Attacking();
     }
 
-    private void Attacking()
-    {
-        Debug.Log("Attck");
-        agent.SetDestination(target.position);
-        FaceTarget();
-        characterCombat.Attack();
-    }
+   
 
     private void Chasing()
     {
         Debug.Log("Chas");
         agent.SetDestination(target.position);
         FaceTarget();
+    }
+
+    private void Attacking()
+    {
+        Debug.Log("Attack");
+        agent.SetDestination(target.position);
+        FaceTarget();
+        characterCombat.AttackEnemyToPlayer();
     }
     #region Patrol RANDOM
     private void Patrolling()
