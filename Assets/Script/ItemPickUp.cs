@@ -6,6 +6,12 @@ public class ItemPickUp : Interactable
 {
     public Item item;
 
+    private ItemDetector itemDetector;
+    private void Start()
+    {
+        itemDetector = FindObjectOfType<ItemDetector>();
+    }
+
     public override void Interact()
     {
         base.Interact();
@@ -17,5 +23,20 @@ public class ItemPickUp : Interactable
         //item.Use();
         Inventory.instance.Add(item);
         Destroy(gameObject);
+    }
+    private void OnMouseEnter()
+    {
+        if (itemDetector != null)
+        {
+            itemDetector.ShowItemText(item.name);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (itemDetector != null)
+        {
+            itemDetector.HideItemText();
+        }
     }
 }

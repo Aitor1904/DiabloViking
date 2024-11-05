@@ -11,11 +11,11 @@ public class HealingAltar : MonoBehaviour
     [SerializeField]
     private float healingDuration = 10f;
 
-    private HealthManager playerHealthManager; 
+    private HealthManager playerHealthManager;
+    private Inventory playerInventory;
     private bool isHealingActive = false;
     private float healingTimer;
     private bool playerInRange = false;
-    private Inventory playerInventory;
 
     [SerializeField]
     private ParticleSystem healingParticles;
@@ -25,17 +25,24 @@ public class HealingAltar : MonoBehaviour
     [SerializeField]
     private Item healthPotion;
 
+    private InventoryUI inventoryUI;
+
+    private void Start()
+    {
+        inventoryUI = FindObjectOfType<InventoryUI>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerHealthManager = other.GetComponent<HealthManager>();
-            playerInventory = other.GetComponent<Inventory>(); // Aquí se asigna el inventario
+            playerInventory = other.GetComponent<Inventory>();
 
             if (playerHealthManager != null && playerInventory != null)
             {
                 playerInRange = true;
-                Debug.Log("Player in range");
+                Debug.Log("Player in helth range");
             }
         }
     }
@@ -46,13 +53,13 @@ public class HealingAltar : MonoBehaviour
         {
             playerInRange = false;
             StopHealing();
-            Debug.Log("Player left healing range");
+            Debug.Log("Player left helth range");
         }
     }
 
     private void Update()
     {
-        if(playerInRange && Input.GetKeyDown(KeyCode.Q))
+        if (playerInRange && Input.GetKeyDown(KeyCode.Q))
         {
             if (playerInventory != null && HasHealthPotion())
             {
@@ -61,16 +68,21 @@ public class HealingAltar : MonoBehaviour
                 if (isHealingActive)
                 {
                     StartHealing();
-                    playerInventory.Remove(healthPotion); // Consumir la poción
+                    playerInventory.Remove(healthPotion);
+                    RemoveHealthPotionIcon();
                 }
                 else
                 {
                     StopHealing();
                 }
             }
+            else if (playerInventory == null)
+            {
+                Debug.LogWarning("No inventory");
+            }
             else
             {
-                Debug.Log("No healthPtion in Iventory");
+                Debug.Log("No helath potion in inventory");
             }
         }
 
@@ -99,7 +111,7 @@ public class HealingAltar : MonoBehaviour
         }
 
         healingTimer = healingDuration;
-        Debug.Log("Stat healing " + healingDuration + " seconds");
+        Debug.Log("Start healing" + healingDuration);
     }
 
     private void StopHealing()
@@ -126,6 +138,7 @@ public class HealingAltar : MonoBehaviour
             playerHealthManager.ModifyHealth(newHealth);
         }
     }
+
     private bool HasHealthPotion()
     {
         if (playerInventory == null)
@@ -141,5 +154,17 @@ public class HealingAltar : MonoBehaviour
             }
         }
         return false;
+    }
+
+    private void RemoveHealthPotionIcon()
+    {
+        if (inventoryUI != null)
+        {
+            inventoryUI.UpdateUI();
+        }
+        else
+        {
+            Debug.LogWarning("InventoryUI not found");
+        }
     }
 }
