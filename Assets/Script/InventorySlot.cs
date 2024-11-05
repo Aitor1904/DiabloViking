@@ -31,19 +31,15 @@ public class InventorySlot : MonoBehaviour
 
     public void RemoveItemFromInventory()
     {
-        if (item != null)
-        {
-            Inventory.instance.Remove(item);
-            ClearSlot(); 
-            GameObject.Find("Canvas").GetComponent<InventoryUI>().UpdateUI();
-        }
+        Inventory.instance.Remove(item);
+        ClearSlot();
     }
 
     public void Use()
     {
         if (item != null)
         {
-            Debug.Log("Usando el ítem: " + item.name);
+            Debug.Log("Usando el ï¿½tem: " + item.name);
             item.Use();
             RemoveItemFromInventory();
         }
