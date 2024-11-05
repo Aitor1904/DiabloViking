@@ -154,8 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healingAmount: 7.5
   healingInterval: 1.5
+  healingDuration: 10
   healingParticles: {fileID: 67153876}
   healingSound: {fileID: 84595987}
+  healthPotion: {fileID: 11400000, guid: e8e5379feb7f38845914647e3dcc2e51, type: 2}
 --- !u!4 &84595985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b47becd1ceb61b9418b47533902e1e65,
@@ -5266,6 +5268,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5307,6 +5316,7 @@ GameObject:
   - component: {fileID: 1280367453}
   - component: {fileID: 1280367446}
   - component: {fileID: 1280367454}
+  - component: {fileID: 1280367455}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -5477,6 +5487,20 @@ MonoBehaviour:
   health: 20
   maxHealth: 100
   healthBar: {fileID: 491544666}
+--- !u!114 &1280367455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280367445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3f3170db206154bb47a21f2f32cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventorySpace: 10
+  items: []
 --- !u!1 &1311060511
 GameObject:
   m_ObjectHideFlags: 0
@@ -6545,7 +6569,7 @@ GameObject:
   - component: {fileID: 1573807100}
   - component: {fileID: 1573807099}
   - component: {fileID: 1573807098}
-  - component: {fileID: 1573807097}
+  - component: {fileID: 1573807102}
   m_Layer: 9
   m_Name: C
   m_TagString: Untagged
@@ -6553,20 +6577,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1573807097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1573807096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b04ffdaa729684b9ee1fd952de8682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  radius: 2
-  interactionTransform: {fileID: 1573807101}
 --- !u!135 &1573807098
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6653,6 +6663,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1573807102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573807096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b7ad6058f69f641a3445d1760f2e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  interactionTransform: {fileID: 1573807101}
+  item: {fileID: 11400000, guid: e8e5379feb7f38845914647e3dcc2e51, type: 2}
 --- !u!1 &1581324159
 GameObject:
   m_ObjectHideFlags: 0
@@ -6902,7 +6927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1602031455}
   - component: {fileID: 1602031453}
-  - component: {fileID: 1602031456}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6939,20 +6963,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1602031456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602031452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a3f3170db206154bb47a21f2f32cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventorySpace: 10
-  items: []
 --- !u!1 &1611332374
 GameObject:
   m_ObjectHideFlags: 0

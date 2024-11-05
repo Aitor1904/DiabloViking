@@ -8,26 +8,35 @@ public class HealingAltar : MonoBehaviour
     private float healingAmount = 5f;
     [SerializeField]
     private float healingInterval = 1f;
+    [SerializeField]
+    private float healingDuration = 10f;
 
     private HealthManager playerHealthManager; 
-    private bool isHealingActive = false;       
+    private bool isHealingActive = false;
+    private float healingTimer;
+    private bool playerInRange = false;
+    private Inventory playerInventory;
 
     [SerializeField]
     private ParticleSystem healingParticles;
-
     [SerializeField]
     private AudioSource healingSound;
+
+    [SerializeField]
+    private Item healthPotion;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Enter");
             playerHealthManager = other.GetComponent<HealthManager>();
-            /*if (playerHealthManager != null && healingParticles != null)
+            playerInventory = other.GetComponent<Inventory>(); // Aquí se asigna el inventario
+
+            if (playerHealthManager != null && playerInventory != null)
             {
-                healingParticles.Play(); 
-            }*/
+                playerInRange = true;
+                Debug.Log("Player in range");
+            }
         }
     }
 
@@ -35,50 +44,50 @@ public class HealingAltar : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Exit");
-            playerHealthManager = null; 
-            /*if (healingParticles != null && healingParticles.isPlaying)
-            {
-                healingParticles.Stop(); 
-            }*/
-            StopHealing(); 
-            Debug.Log("Stop Healing");
+            playerInRange = false;
+            StopHealing();
+            Debug.Log("Player left healing range");
         }
     }
 
     private void Update()
     {
-        if (playerHealthManager != null)
+        if(playerInRange && Input.GetKeyDown(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (playerInventory != null && HasHealthPotion())
             {
-                isHealingActive = !isHealingActive; 
+                isHealingActive = !isHealingActive;
+
                 if (isHealingActive)
                 {
-                    Debug.Log("Start Healing");
                     StartHealing();
+                    playerInventory.Remove(healthPotion); // Consumir la poción
                 }
                 else
                 {
                     StopHealing();
-                    Debug.Log("Stop particles");
                 }
+            }
+            else
+            {
+                Debug.Log("No healthPtion in Iventory");
             }
         }
 
         if (isHealingActive)
         {
+            healingTimer -= Time.deltaTime;
             HealPlayer();
+
+            if (healingTimer <= 0)
+            {
+                StopHealing();
+            }
         }
     }
 
     private void StartHealing()
     {
-        if (healingParticles != null)
-        {
-            healingParticles.Play(); 
-        }
-
         if (healingParticles != null)
         {
             healingParticles.Play();
@@ -88,6 +97,9 @@ public class HealingAltar : MonoBehaviour
         {
             healingSound.Play();
         }
+
+        healingTimer = healingDuration;
+        Debug.Log("Stat healing " + healingDuration + " seconds");
     }
 
     private void StopHealing()
@@ -99,8 +111,11 @@ public class HealingAltar : MonoBehaviour
 
         if (healingSound != null && healingSound.isPlaying)
         {
-            healingSound.Stop(); 
+            healingSound.Stop();
         }
+
+        isHealingActive = false;
+        Debug.Log("Healing stoped");
     }
 
     private void HealPlayer()
@@ -110,5 +125,21 @@ public class HealingAltar : MonoBehaviour
             float newHealth = Mathf.Clamp(playerHealthManager.health + healingAmount * Time.deltaTime / healingInterval, 0, playerHealthManager.maxHealth);
             playerHealthManager.ModifyHealth(newHealth);
         }
+    }
+    private bool HasHealthPotion()
+    {
+        if (playerInventory == null)
+        {
+            return false;
+        }
+
+        foreach (Item item in playerInventory.items)
+        {
+            if (item == healthPotion)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
