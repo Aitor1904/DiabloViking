@@ -438,6 +438,7 @@ MonoBehaviour:
   animator: {fileID: 2102835216}
   agent: {fileID: 1724818306}
   characterCombat: {fileID: 1724818303}
+  enemyHealthManager: {fileID: 0}
 --- !u!114 &1724818305
 MonoBehaviour:
   m_ObjectHideFlags: 0
