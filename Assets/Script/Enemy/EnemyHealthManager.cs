@@ -1,15 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HealthManager : MonoBehaviour
+public class EnemyHealthManager : MonoBehaviour
 {
     public float health = 100;
     public float maxHealth = 100;
     public Image healthBar;
+
+    public event Action OnDie;
+
+    [SerializeField]
+    private EnemyAI enemyAI;
 
     private void Start()
     {
@@ -19,9 +24,10 @@ public class HealthManager : MonoBehaviour
     {
         health += healthModified;
         healthBar.fillAmount = health / maxHealth;
-        if (health <= 0)
+        if(health <= 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            enemyAI.IsDead = true;
+            OnDie?.Invoke();
         }
     }
 }

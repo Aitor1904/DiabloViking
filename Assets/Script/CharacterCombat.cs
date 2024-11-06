@@ -29,13 +29,12 @@ public class CharacterCombat : MonoBehaviour
         }
     }
 
-    public void AttackPlayerToEnemy()
+    public void AttackPlayerToEnemy(EnemyHealthManager enemyHealthManager)
     {
         if (attackCountdown <= 0f)
         {
             attackCountdown = 1 / attackRate;
-
-
+            enemyHealthManager.ModifyHealth(-25);
             OnAttack?.Invoke();
         }
     }

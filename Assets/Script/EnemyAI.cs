@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Patrol")]
     public Transform centrePoint;
 
-    Vector3  walkPoint;
+    Vector3 walkPoint;
     public float walkPointRange;
     bool isWalkPointSet;
     Vector3 distanceToWalkPoint;
@@ -31,17 +31,24 @@ public class EnemyAI : MonoBehaviour
 
     bool playerIsSightRange, playerInAttackRange;
 
+    bool isDead = false;
+
+    public bool IsDead { get => isDead; set => isDead = value; }
+
     private void Update()
     {
-        playerIsSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+        if (!isDead)
+        {
+            playerIsSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        if (!playerIsSightRange && !playerInAttackRange) Patrolling3();
-        if (playerIsSightRange && !playerInAttackRange) Chasing();
-        if (playerIsSightRange && playerInAttackRange) Attacking();
+            if (!playerIsSightRange && !playerInAttackRange) Patrolling3();
+            if (playerIsSightRange && !playerInAttackRange) Chasing();
+            if (playerIsSightRange && playerInAttackRange) Attacking();
+        }
     }
 
-   
+
 
     private void Chasing()
     {
@@ -66,7 +73,7 @@ public class EnemyAI : MonoBehaviour
             agent.SetDestination(walkPoint);
         }
         distanceToWalkPoint = transform.position - walkPoint;
-        if(distanceToWalkPoint.magnitude < 1.5f)
+        if (distanceToWalkPoint.magnitude < 1.5f)
         {
             isWalkPointSet = false;
         }
@@ -74,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
     bool SetCorrectorDestination(Vector3 targetDestination)
     {
-        if(NavMesh.SamplePosition(targetDestination, out NavMeshHit hit, .5f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(targetDestination, out NavMeshHit hit, .5f, NavMesh.AllAreas))
         {
             walkPoint = hit.position;
             return true;
@@ -86,7 +93,7 @@ public class EnemyAI : MonoBehaviour
     {
         float randomX = Random.Range(-walkPointRange, walkPointRange);
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        
+
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
         if (SetCorrectorDestination(walkPoint))
         {
@@ -98,10 +105,10 @@ public class EnemyAI : MonoBehaviour
 
     void Patrolling2()
     {
-        if(agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             Vector3 point;
-            if(RandomPoint(centrePoint.position, walkPointRange,out point))
+            if (RandomPoint(centrePoint.position, walkPointRange, out point))
             {
                 agent.SetDestination(point);
             }
@@ -113,7 +120,7 @@ public class EnemyAI : MonoBehaviour
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
 
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1f, NavMesh.AllAreas) )
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1f, NavMesh.AllAreas))
         {
             result = hit.position;
             return true;
@@ -127,7 +134,7 @@ public class EnemyAI : MonoBehaviour
     void Patrolling3()
     {
         Debug.Log("Patrol3");
-        if (agent.remainingDistance <= agent.stoppingDistance) 
+        if (agent.remainingDistance <= agent.stoppingDistance)
         {
             IterateWaypoint();
             UpdateDestination();
@@ -145,7 +152,7 @@ public class EnemyAI : MonoBehaviour
     void IterateWaypoint()
     {
         wayPointIndex++;
-        if(wayPointIndex == waypoints.Length)
+        if (wayPointIndex == waypoints.Length)
         {
             wayPointIndex = 0;
         }

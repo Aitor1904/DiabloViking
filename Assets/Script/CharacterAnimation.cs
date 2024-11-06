@@ -12,9 +12,13 @@ public class CharacterAnimation : MonoBehaviour
     private NavMeshAgent agent;
     [SerializeField]
     CharacterCombat characterCombat;
+
+    [SerializeField]
+    EnemyHealthManager enemyHealthManager;
     private void Start()
     {
         characterCombat.OnAttack += OnAttack;
+        enemyHealthManager.OnDie += OnDie;
     }
     private void Update()
     {
@@ -24,5 +28,10 @@ public class CharacterAnimation : MonoBehaviour
     void OnAttack()
     {
         animator.SetTrigger("Attack");
+    }
+
+    void OnDie()
+    {
+        animator.SetTrigger("Die");
     }
 }
