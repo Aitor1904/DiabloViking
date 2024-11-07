@@ -23,6 +23,7 @@ public class ItemPickUp : Interactable
         //item.Use();
         Inventory.instance.Add(item);
         Destroy(gameObject);
+        itemDetector.HideItemText();
     }
     private void OnMouseEnter()
     {
