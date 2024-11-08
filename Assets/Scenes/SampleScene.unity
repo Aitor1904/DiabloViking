@@ -2492,6 +2492,7 @@ GameObject:
   - component: {fileID: 773282513}
   - component: {fileID: 773282512}
   - component: {fileID: 773282511}
+  - component: {fileID: 773282515}
   m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
@@ -2586,6 +2587,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &773282515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773282510}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.000001, y: 2.2204463e-16, z: 10.000001}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &778380465 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 4957605393579145647, guid: 4f46098734d87e24490aef9267915ad2,
@@ -2638,7 +2660,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: f0154e94c1eacee45b74be93a01db93a, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 729d9ae51fc6f584fa0a6624661fa101, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &780751416
 Transform:
@@ -3538,6 +3560,7 @@ GameObject:
   - component: {fileID: 1280367446}
   - component: {fileID: 1280367455}
   - component: {fileID: 1280367456}
+  - component: {fileID: 1280367457}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -3579,7 +3602,7 @@ MonoBehaviour:
   animator: {fileID: 1524206015}
   agent: {fileID: 1280367449}
   characterCombat: {fileID: 1280367453}
-  enemyHealthManager: {fileID: 0}
+  enemyHealthManager: {fileID: 1280367457}
 --- !u!114 &1280367448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3721,6 +3744,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySpace: 16
   items: []
+--- !u!114 &1280367457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280367445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3636446657af149a0a8a8a060c225f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  healthBar: {fileID: 491544666}
 --- !u!1 &1311060511
 GameObject:
   m_ObjectHideFlags: 0
@@ -4897,7 +4935,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1602031455}
   - component: {fileID: 1602031453}
-  - component: {fileID: 1602031456}
   - component: {fileID: 1602031457}
   m_Layer: 0
   m_Name: GameManager
@@ -4935,21 +4972,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1602031456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602031452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee3636446657af149a0a8a8a060c225f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
-  healthBar: {fileID: 491544666}
 --- !u!114 &1602031457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5204,6 +5226,7 @@ GameObject:
   - component: {fileID: 1700043151}
   - component: {fileID: 1700043150}
   - component: {fileID: 1700043149}
+  - component: {fileID: 1700043152}
   m_Layer: 5
   m_Name: EnemyHPCanvas
   m_TagString: Untagged
@@ -5294,6 +5317,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1700043152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700043147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dbc93299a1b0742b8454b757aa1c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whatToLookAt: {fileID: 330585546}
+  whatToMove: {fileID: 1700043148}
 --- !u!1001 &1706186346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5440,7 +5477,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!136 &1757719695
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5505,7 +5542,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 5000
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5583,13 +5620,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1757719694}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 478ce37cda4536b44b766187e162c7be, type: 3}
+  m_Script: {fileID: 11500000, guid: ee3636446657af149a0a8a8a060c225f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
   healthBar: {fileID: 1986522589}
-  enemyAI: {fileID: 1757719696}
 --- !u!1 &1826365240
 GameObject:
   m_ObjectHideFlags: 0

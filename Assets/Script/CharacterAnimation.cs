@@ -14,7 +14,7 @@ public class CharacterAnimation : MonoBehaviour
     CharacterCombat characterCombat;
 
     [SerializeField]
-    EnemyHealthManager enemyHealthManager;
+    HealthManager enemyHealthManager;
     private void Start()
     {
         characterCombat.OnAttack += OnAttack;

@@ -23,13 +23,13 @@ public class CharacterCombat : MonoBehaviour
         {
             attackCountdown = 1 / attackRate;
 
-            GameManager.Instance.GetComponent<HealthManager>().ModifyHealth(-10);
+            Player.instance.GetComponent<HealthManager>().ModifyHealth(-15);
 
             OnAttack?.Invoke();
         }
     }
 
-    public void AttackPlayerToEnemy(EnemyHealthManager enemyHealthManager)
+    public void AttackPlayerToEnemy(HealthManager enemyHealthManager)
     {
         if (attackCountdown <= 0f)
         {

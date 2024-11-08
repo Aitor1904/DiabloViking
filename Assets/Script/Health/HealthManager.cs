@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class HealthManager : MonoBehaviour
     public float maxHealth = 100;
     public Image healthBar;
 
+    public event Action OnDie;
     private void Start()
     {
         healthBar.fillAmount = health / maxHealth;
@@ -21,6 +23,17 @@ public class HealthManager : MonoBehaviour
         healthBar.fillAmount = health / maxHealth;
         if (health <= 0)
         {
+            OnDie?.Invoke();
+
+            if(gameObject.GetComponent<Player>())
+            {
+
+            }
+
+            if(gameObject.GetComponent<Enemy>())
+            {
+
+            }
             SceneManager.LoadScene("SampleScene");
         }
     }
