@@ -18,6 +18,9 @@ public class CharacterAnimation : MonoBehaviour
     private void Start()
     {
         characterCombat.OnAttack += OnAttack;
+
+        enemyHealthManager.OnHit += OnHit;
+
         enemyHealthManager.OnDie += OnDie;
     }
     private void Update()
@@ -34,4 +37,10 @@ public class CharacterAnimation : MonoBehaviour
     {
         animator.SetTrigger("Die");
     }
+
+    void OnHit()
+    {
+        animator.SetTrigger("Hit");
+    }
+
 }

@@ -27,9 +27,16 @@ public class HealingAltar : MonoBehaviour
 
     private InventoryUI inventoryUI;
 
+    [SerializeField]
+    private Light healingLight;
+
     private void Start()
     {
         inventoryUI = FindObjectOfType<InventoryUI>();
+        if (healingLight != null)
+        {
+            healingLight.enabled = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -110,6 +117,11 @@ public class HealingAltar : MonoBehaviour
             healingSound.Play();
         }
 
+        if (healingLight != null)
+        {
+            healingLight.enabled = true;
+        }
+
         healingTimer = healingDuration;
         Debug.Log("Start healing" + healingDuration);
     }
@@ -124,6 +136,11 @@ public class HealingAltar : MonoBehaviour
         if (healingSound != null && healingSound.isPlaying)
         {
             healingSound.Stop();
+        }
+
+        if (healingLight != null)
+        {
+            healingLight.enabled = false;
         }
 
         isHealingActive = false;
