@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
             if (hasHit)
             {
                 SetFocus(hit.collider.GetComponent<Interactable>());
+                Vector3 direction = (hit.collider.gameObject.transform.position - transform.position).normalized;
+                var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, .2f * Time.deltaTime);
             }
         }
     }
