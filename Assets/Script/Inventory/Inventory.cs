@@ -17,6 +17,9 @@ public class Inventory : MonoBehaviour
     public int inventorySpace = 10;
     public List<Item> items = new List<Item>();
 
+    public delegate void OnItemChange();
+    public OnItemChange onItemChangeCallBack;
+
     public void Add(Item item)
     {
         if(item.showInInventory)
@@ -27,12 +30,16 @@ public class Inventory : MonoBehaviour
                 return;
             }
             items.Add(item);
-            GameObject.Find("Canvas").GetComponent<InventoryUI>().UpdateUI();
+            if(onItemChangeCallBack != null)
+               onItemChangeCallBack.Invoke();
+            //GameObject.Find("Canvas").GetComponent<InventoryUI>().UpdateUI();
         }
     }
 
     public void Remove(Item item)
     {
         items.Remove(item);
+        if (onItemChangeCallBack != null)
+            onItemChangeCallBack.Invoke();
     }
 }

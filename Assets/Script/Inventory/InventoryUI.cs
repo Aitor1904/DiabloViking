@@ -7,6 +7,11 @@ public class InventoryUI : MonoBehaviour
     [SerializeField]
     GameObject inventoryUI;
 
+
+    private void Start()
+    {
+        Inventory.instance.onItemChangeCallBack += UpdateUI;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))

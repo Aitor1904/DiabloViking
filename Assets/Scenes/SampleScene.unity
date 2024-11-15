@@ -3389,7 +3389,6 @@ GameObject:
   - component: {fileID: 1051846263}
   - component: {fileID: 1051846262}
   - component: {fileID: 1051846261}
-  - component: {fileID: 1051846260}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -3397,18 +3396,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1051846260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051846259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef5608a1c5ef334b91c5ba572e9fdb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1051846261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5128,6 +5115,7 @@ GameObject:
   - component: {fileID: 1602031455}
   - component: {fileID: 1602031453}
   - component: {fileID: 1602031457}
+  - component: {fileID: 1602031458}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5174,6 +5162,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ef5608a1c5ef334b91c5ba572e9fdb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1602031458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602031452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98488981eeffc24d90c871964b81cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1617476988
@@ -5669,7 +5669,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!136 &1757719695
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5707,6 +5707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1757719697}
   target: {fileID: 1280367451}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -5720,6 +5721,8 @@ MonoBehaviour:
   - {fileID: 1336307854}
   sightRange: 10
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &1757719697
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6357,7 +6360,7 @@ SceneRoots:
   - {fileID: 232016691}
   - {fileID: 271360103}
   - {fileID: 1573807101}
-  - {fileID: 1051846263}
   - {fileID: 1602031455}
+  - {fileID: 1051846263}
   - {fileID: 679530896}
   - {fileID: 1315231855}

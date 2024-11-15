@@ -1,85 +1,88 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+
     [SerializeField]
     NavMeshAgent agent;
     [SerializeField]
     Transform target;
     [SerializeField]
+    Animator animator;
+
+    [SerializeField]
     LayerMask whatIsPlayer;
     [SerializeField]
     CharacterCombat characterCombat;
+
+
     [Header("Patrol")]
     public Transform centrePoint;
-
     Vector3 walkPoint;
     public float walkPointRange;
     bool isWalkPointSet;
     Vector3 distanceToWalkPoint;
-
     public Transform[] waypoints;
     int wayPointIndex;
-
     public float sightRange;
     public float attackRange;
 
+    [Header("Drop")]
+    public GameObject itemToDrop;
+    public Transform whereToDrop;
 
-    bool playerIsSightRange, playerInAttackRange;
 
+
+    bool playerInSightRange, playerInAttackRange;
     bool isDead = false;
-
     public bool IsDead { get => isDead; set => isDead = value; }
 
     private void Update()
     {
-        if (!isDead)
+        if (!IsDead)
         {
-            playerIsSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
             playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-            if (!playerIsSightRange && !playerInAttackRange) Patrolling3();
-            if (playerIsSightRange && !playerInAttackRange) Chasing();
-            if (playerIsSightRange && playerInAttackRange) Attacking();
+            if (!playerInSightRange && !playerInAttackRange) Patrolling3();
+            if (playerInSightRange && !playerInAttackRange) Chasing();
+            if (playerInSightRange && playerInAttackRange) Attacking();
         }
     }
 
-
-
-    private void Chasing()
+    #region Patrol FullRandom
+    void Patrolling()
     {
-        Debug.Log("Chas");
-        agent.SetDestination(target.position);
-        FaceTarget();
-    }
+        Debug.Log("Patrolling");
 
-    private void Attacking()
-    {
-        Debug.Log("Attack");
-        agent.SetDestination(target.position);
-        FaceTarget();
-        characterCombat.AttackEnemyToPlayer();
-    }
-    #region Patrol RANDOM
-    private void Patrolling()
-    {
         if (!isWalkPointSet) SearchWalkPoint();
+
         if (isWalkPointSet)
         {
             agent.SetDestination(walkPoint);
         }
-        distanceToWalkPoint = transform.position - walkPoint;
-        if (distanceToWalkPoint.magnitude < 1.5f)
+        float dist = agent.remainingDistance;
+        if (dist != Mathf.Infinity && agent.pathStatus == NavMeshPathStatus.PathComplete && agent.remainingDistance == 0)
         {
             isWalkPointSet = false;
         }
     }
+    void SearchWalkPoint()
+    {
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
 
-    bool SetCorrectorDestination(Vector3 targetDestination)
+        walkPoint = new Vector3(transform.position.x + randomX, 0, transform.position.z + randomZ);
+
+        if (SetCorrectDestination(walkPoint))
+        {
+            isWalkPointSet = true;
+        }
+    }
+    bool SetCorrectDestination(Vector3 targetDestination)
     {
         if (NavMesh.SamplePosition(targetDestination, out NavMeshHit hit, .5f, NavMesh.AllAreas))
         {
@@ -88,21 +91,9 @@ public class EnemyAI : MonoBehaviour
         }
         return false;
     }
-
-    void SearchWalkPoint()
-    {
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        if (SetCorrectorDestination(walkPoint))
-        {
-            isWalkPointSet = true;
-        }
-    }
     #endregion
-    #region Patrol RandomAroundCenterPoint
 
+    #region Patrol RandomAroundCenterPoint
     void Patrolling2()
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
@@ -114,12 +105,10 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
-
     bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
         Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
-
         if (NavMesh.SamplePosition(randomPoint, out hit, 1f, NavMesh.AllAreas))
         {
             result = hit.position;
@@ -130,13 +119,13 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
     #endregion
-    #region RandomAroundCenterPoint
+
+    #region FollowPoints
     void Patrolling3()
     {
-        Debug.Log("Patrol3");
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            IterateWaypoint();
+            IterateWaypoints();
             UpdateDestination();
         }
     }
@@ -149,7 +138,7 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(newPosition);
     }
 
-    void IterateWaypoint()
+    void IterateWaypoints()
     {
         wayPointIndex++;
         if (wayPointIndex == waypoints.Length)
@@ -157,16 +146,35 @@ public class EnemyAI : MonoBehaviour
             wayPointIndex = 0;
         }
     }
-
     #endregion
 
+    void Chasing()
+    {
+        agent.SetDestination(target.position);
+        FaceTarget();
+    }
+
+    void Attacking()
+    {
+        agent.SetDestination(target.position);
+        FaceTarget();
+        characterCombat.AttackEnemyToPlayer();
+        //CombatLogic
+    }
+
+    public void Dying()
+    {
+        isDead = true;
+        GetComponent<Collider>().enabled = false;
+        agent.enabled = false;
+        Instantiate(itemToDrop, whereToDrop.transform.position, Quaternion.identity);
+    }
     void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         var targetRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, .2f * Time.deltaTime);
     }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

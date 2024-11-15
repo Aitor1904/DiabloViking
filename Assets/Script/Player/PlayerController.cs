@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerController : MonoBehaviour
     LayerMask whatIsGround;
     [SerializeField]
     LayerMask whatIfInteractable;
+
+    public delegate void OnFocusChanged(Interactable newFocus);
+    public OnFocusChanged onFocusChangedCallback;
+
     private void Awake()
     {
         mover = GetComponent<Mover>();
@@ -29,6 +34,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -55,7 +64,11 @@ public class PlayerController : MonoBehaviour
 
     void SetFocus(Interactable newFocus)
     {
-        if(focus != newFocus && focus != null)
+        if (onFocusChangedCallback != null)
+        {
+            onFocusChangedCallback.Invoke(newFocus);
+        }
+        if (focus != newFocus && focus != null)
         {
             focus.OnDefocused();
         }

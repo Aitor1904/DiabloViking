@@ -5,11 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Equipament")]
 public class Equipament : Item
 {
-    public EquipamentSlot equipamentSlot;
+    public EquipamentSlot equipSlot;
     public SkinnedMeshRenderer prefab;
     public override void Use()
     {
-        //RemoveFromInventory();
+        EquipamentManager.Instance.Equip(this);
+        RemoveFromInventory();
         base.Use();
     }
 }
