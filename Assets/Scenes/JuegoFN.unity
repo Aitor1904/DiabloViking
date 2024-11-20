@@ -1501,6 +1501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 36899021}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1514,6 +1515,8 @@ MonoBehaviour:
   - {fileID: 1925452587}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &36899021
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5500,6 +5503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 192911668}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -5513,6 +5517,8 @@ MonoBehaviour:
   - {fileID: 584888701}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &192911668
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8862,6 +8868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 298502581}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -8875,6 +8882,8 @@ MonoBehaviour:
   - {fileID: 410787755}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &298502581
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -8950,6 +8959,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 642884732}
+  - {fileID: 1126451956}
+  - {fileID: 1461690332}
+  - {fileID: 674206380}
+  - {fileID: 1255799003}
   - {fileID: 1498835330}
   m_Father: {fileID: 365842874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9281,6 +9294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 312885190}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -9294,6 +9308,8 @@ MonoBehaviour:
   - {fileID: 515271394}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &312885190
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11578,6 +11594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 369720130}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -11591,6 +11608,8 @@ MonoBehaviour:
   - {fileID: 528821145}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &369720130
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -15180,6 +15199,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 509671807}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -15193,6 +15213,8 @@ MonoBehaviour:
   - {fileID: 431752105}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &509671807
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -18700,7 +18722,7 @@ Transform:
   m_GameObject: {fileID: 642884731}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.5, y: 7.1, z: 46.3}
+  m_LocalPosition: {x: -1.4, y: 3.37, z: -4.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18721,7 +18743,7 @@ ReflectionProbe:
   m_TimeSlicingMode: 0
   m_Resolution: 128
   m_UpdateFrequency: 0
-  m_BoxSize: {x: 96.09, y: 18.87, z: 149.69}
+  m_BoxSize: {x: 23.86, y: 5.8, z: 14}
   m_BoxOffset: {x: 0, y: 0, z: 0}
   m_NearClip: 0.3
   m_FarClip: 1000
@@ -19755,6 +19777,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 673681454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &674206379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 674206380}
+  - component: {fileID: 674206381}
+  m_Layer: 0
+  m_Name: Reflection Probe (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &674206380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674206379}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -24.79, y: 3.37, z: 35.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305661951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!215 &674206381
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674206379}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 0
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 26.929901, y: 5.8, z: 39.817688}
+  m_BoxOffset: {x: 0.8962469, y: 0, z: 12.9565735}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
 --- !u!1 &683183893
 GameObject:
   m_ObjectHideFlags: 0
@@ -20905,6 +20992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 733555949}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -20918,6 +21006,8 @@ MonoBehaviour:
   - {fileID: 1791410394}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &733555949
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21750,6 +21840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 761573215}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -21763,6 +21854,8 @@ MonoBehaviour:
   - {fileID: 1682771238}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &761573215
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -23648,6 +23741,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 842419767}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -23661,6 +23755,8 @@ MonoBehaviour:
   - {fileID: 2009013366}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &842419767
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -30451,6 +30547,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1102481275}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126451955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126451956}
+  - component: {fileID: 1126451957}
+  m_Layer: 0
+  m_Name: Reflection Probe (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1126451956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126451955}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.49, y: 3.37, z: 2.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305661951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!215 &1126451957
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126451955}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 0
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 5.33, y: 5.8, z: 14}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
 --- !u!4 &1127485765 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d54bb192dd2995448bfecf646ecbe648,
@@ -33157,6 +33318,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1254789024}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1255799002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255799003}
+  - component: {fileID: 1255799004}
+  m_Layer: 0
+  m_Name: Reflection Probe (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1255799003
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255799002}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -18.22, y: 6.84, z: 87.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305661951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!215 &1255799004
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255799002}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 0
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 29.312923, y: 5.8, z: 39.817688}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
 --- !u!4 &1255825879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d54bb192dd2995448bfecf646ecbe648,
@@ -35227,6 +35453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1350353513}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -35240,6 +35467,8 @@ MonoBehaviour:
   - {fileID: 877668525}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &1350353513
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -35506,6 +35735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 1359881646}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -35519,6 +35749,8 @@ MonoBehaviour:
   - {fileID: 367185244}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &1359881646
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -38063,6 +38295,71 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1454407500}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1461690331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1461690332}
+  - component: {fileID: 1461690333}
+  m_Layer: 0
+  m_Name: Reflection Probe (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1461690332
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461690331}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.37, y: 3.37, z: 13.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 305661951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!215 &1461690333
+ReflectionProbe:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461690331}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Type: 0
+  m_Mode: 0
+  m_RefreshMode: 0
+  m_TimeSlicingMode: 0
+  m_Resolution: 128
+  m_UpdateFrequency: 0
+  m_BoxSize: {x: 29.416111, y: 5.8, z: 5.730855}
+  m_BoxOffset: {x: 0, y: 0, z: 0}
+  m_NearClip: 0.3
+  m_FarClip: 1000
+  m_ShadowDistance: 100
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IntensityMultiplier: 1
+  m_BlendDistance: 1
+  m_HDR: 1
+  m_BoxProjection: 0
+  m_RenderDynamicObjects: 0
+  m_UseOcclusionCulling: 1
+  m_Importance: 1
+  m_CustomBakedTexture: {fileID: 0}
 --- !u!1001 &1466335416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56244,6 +56541,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2066881486}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -56257,6 +56555,8 @@ MonoBehaviour:
   - {fileID: 603807368}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &2066881486
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58551,6 +58851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2147021297}
   target: {fileID: 421313578}
+  animator: {fileID: 0}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -58564,6 +58865,8 @@ MonoBehaviour:
   - {fileID: 123095913}
   sightRange: 8.68
   attackRange: 1
+  itemToDrop: {fileID: 0}
+  whereToDrop: {fileID: 0}
 --- !u!195 &2147021297
 NavMeshAgent:
   m_ObjectHideFlags: 0
