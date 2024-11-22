@@ -9,6 +9,7 @@ public class Coin : Item
     {
         base.Use();
         GameManager.Instance.GetComponent<ScoreManager>().AddScore(1);
+        base.RemoveFromInventory();
     }
 
     /*

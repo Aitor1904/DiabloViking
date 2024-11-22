@@ -6,7 +6,11 @@ using UnityEngine;
 public class Equipament : Item
 {
     public EquipamentSlot equipSlot;
-    public SkinnedMeshRenderer prefab;
+
+    public GameObject prefab;
+    public Transform whatToParentTo;
+
+    public SkinnedMeshRenderer mesh;
     public override void Use()
     {
         EquipamentManager.Instance.Equip(this);

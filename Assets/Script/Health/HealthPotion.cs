@@ -10,6 +10,7 @@ public class HealthPotion : Item
         base.Use();
         GameManager.Instance.GetComponent<HealthManager>().ModifyHealth(50);
         Debug.Log("Test");
+        base.RemoveFromInventory();
     }
     /*public override void Interact()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemPickUp : Interactable
 {
     public Item item;
-
+    
     private ItemDetector itemDetector;
     private void Start()
     {
