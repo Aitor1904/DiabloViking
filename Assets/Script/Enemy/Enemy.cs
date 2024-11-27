@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : Interactable
 {
     [SerializeField]
-    private HealthManager enemyHealthManager;
+    private CharacterStats enemyHealthManager;
     public override void Interact()
     {
         base.Interact();

@@ -11,7 +11,7 @@ public class HealingAltar : MonoBehaviour
     [SerializeField]
     private float healingDuration = 10f;
 
-    private HealthManager playerHealthManager;
+    private CharacterStats playerHealthManager;
     private Inventory playerInventory;
     private bool isHealingActive = false;
     private float healingTimer;
@@ -43,7 +43,7 @@ public class HealingAltar : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            playerHealthManager = other.GetComponent<HealthManager>();
+            playerHealthManager = other.GetComponent<CharacterStats>();
             playerInventory = other.GetComponent<Inventory>();
 
             if (playerHealthManager != null && playerInventory != null)

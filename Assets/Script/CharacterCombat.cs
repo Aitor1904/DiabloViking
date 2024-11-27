@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterCombat : MonoBehaviour
@@ -23,18 +24,21 @@ public class CharacterCombat : MonoBehaviour
         {
             attackCountdown = 1 / attackRate;
 
-            Player.instance.GetComponent<HealthManager>().ModifyHealth(-7);
+            int damage = gameObject.GetComponent<CharacterStats>().damage.GetValue();
+            Player.instance.GetComponent<CharacterStats>().ModifyHealth(-damage);
 
             OnAttack?.Invoke();
         }
     }
 
-    public void AttackPlayerToEnemy(HealthManager enemyHealthManager)
+    public void AttackPlayerToEnemy(CharacterStats enemyHealthManager)
     {
         if (attackCountdown <= 0f)
         {
             attackCountdown = 1 / attackRate;
-            enemyHealthManager.ModifyHealth(-35);
+            int damage = Player.instance.GetComponent<CharacterStats>().damage.GetValue();
+
+            enemyHealthManager.ModifyHealth(-damage);
             OnAttack?.Invoke();
         }
     }

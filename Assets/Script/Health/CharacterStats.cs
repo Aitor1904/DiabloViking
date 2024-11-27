@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HealthManager : MonoBehaviour
+public class CharacterStats : MonoBehaviour
 {
     public float health = 100;
     public float maxHealth = 100;
@@ -14,6 +14,9 @@ public class HealthManager : MonoBehaviour
 
     public event Action OnDie;
     public event Action OnHit;
+
+    public Stat damage;
+    public Stat armor;
 
     [SerializeField]
     private Transform healthRock;
@@ -30,7 +33,8 @@ public class HealthManager : MonoBehaviour
     {
         if (healthModified < 0)
         {
-            OnHit?.Invoke();
+            healthModified += armor.GetValue();
+
         }
 
         health += healthModified;
