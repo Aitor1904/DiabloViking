@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_001|Action
+  m_Name: Attack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -21,8 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7721715186239825389, guid: 7bc8ae27a2703874a905d208cc0a4de3,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 926c00b42ce4abc43b732098bf13176d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -157,7 +156,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Armature_001|Action
+  m_Name: Hit
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -171,8 +170,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7721715186239825389, guid: f1dbba8fd6afce349b20fb1ddccfcfce,
-    type: 3}
+  m_Motion: {fileID: 7400000, guid: 1cf02dc7903d35240b233385f9dba805, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -239,8 +237,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7721715186239825389, guid: d8019673d70e3ac498c9152a41c3725c,
-      type: 3}
+    m_Motion: {fileID: 7400000, guid: b2db1e7a1c6abb9418f669badcdbd28b, type: 2}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -248,18 +245,16 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7721715186239825389, guid: 6e8c8333595bd504bafa76380ceb14e4,
-      type: 3}
-    m_Threshold: 0.5
+    m_Motion: {fileID: 7400000, guid: 7dfd048dc3b969f4f8120b8e9462f99e, type: 2}
+    m_Threshold: 3.5
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7721715186239825389, guid: cc4a5eedb738a174c850b4d7d3818de6,
-      type: 3}
-    m_Threshold: 1
+    m_Motion: {fileID: 7400000, guid: a3e5b0adcd229bb4fa7d3b06032bffac, type: 2}
+    m_Threshold: 7
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
@@ -268,8 +263,8 @@ BlendTree:
   m_BlendParameter: Velocity
   m_BlendParameterY: Blend
   m_MinThreshold: 0
-  m_MaxThreshold: 1
-  m_UseAutomaticThresholds: 1
+  m_MaxThreshold: 7
+  m_UseAutomaticThresholds: 0
   m_NormalizedBlendValues: 0
   m_BlendType: 0
 --- !u!1101 &8947259810120904056

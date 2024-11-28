@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23654b56e54d4ce4f8643d08516b112c, type: 3}
-  m_Name: New Item
+  m_Name: Casco
   m_EditorClassIdentifier: 
-  name: New Item
-  icon: {fileID: 21300000, guid: 30f045a0faf626b42a2bf999699cf75c, type: 3}
+  name: Casco
+  icon: {fileID: 0}
   showInInventory: 1
   equipSlot: 0
-  prefab: {fileID: 7681816996506866628, guid: 2c97ec6e9b3dc3e45ad70f4daf457b14, type: 3}
-  whatToParentTo: {fileID: 0}
-  mesh: {fileID: 0}
+  armorModifier: 0
+  damageModifier: 0
+  objectToActivate: {fileID: 7628719440794358477, guid: f8144a02739d90a49a31f7547cad8ef0,
+    type: 3}

@@ -14,14 +14,14 @@ public class CharacterAnimation : MonoBehaviour
     CharacterCombat characterCombat;
 
     [SerializeField]
-    CharacterStats enemyHealthManager;
+    CharacterStats characterStats;
     private void Start()
     {
         characterCombat.OnAttack += OnAttack;
 
         //enemyHealthManager.OnHit += OnHit;
 
-        enemyHealthManager.OnDie += OnDie;
+        characterStats.OnDie += OnDie;
     }
     private void Update()
     {
