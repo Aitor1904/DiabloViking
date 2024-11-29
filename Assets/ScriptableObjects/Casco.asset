@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: Casco
   m_EditorClassIdentifier: 
   name: Casco
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2ff65aea1cb1bb14495981580f8c2a18, type: 3}
   showInInventory: 1
   equipSlot: 0
-  armorModifier: 0
+  armorModifier: 15
   damageModifier: 0
-  objectToActivate: {fileID: 7628719440794358477, guid: f8144a02739d90a49a31f7547cad8ef0,
-    type: 3}
+  objectToActivate: {fileID: 0}

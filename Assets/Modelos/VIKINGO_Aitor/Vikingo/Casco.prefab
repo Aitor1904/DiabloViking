@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7628719440794358477
+--- !u!1 &2846402829162028572
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1334107800479926154}
-  - component: {fileID: 9210448349400489140}
+  - component: {fileID: 7877615200843705057}
+  - component: {fileID: 1083038741147347069}
   m_Layer: 0
   m_Name: Casco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1334107800479926154
+  m_IsActive: 0
+--- !u!4 &7877615200843705057
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7628719440794358477}
+  m_GameObject: {fileID: 2846402829162028572}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000059604645, y: 3.4823215e-24, z: 3.0879948e-24, w: 1}
   m_LocalPosition: {x: 1.4823077e-23, y: 8.541173e-24, z: -1.9539925e-16}
@@ -32,13 +32,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &9210448349400489140
+--- !u!137 &1083038741147347069
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7628719440794358477}
+  m_GameObject: {fileID: 2846402829162028572}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1

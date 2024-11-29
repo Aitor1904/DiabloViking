@@ -18,8 +18,8 @@ public class CharacterStats : MonoBehaviour
     public Stat damage;
     public Stat armor;
 
-    [SerializeField]
-    private Transform healthRock;
+    //[SerializeField]
+    //private Transform healthRock;
 
     private ScoreManager scoreManager;
 
@@ -55,10 +55,10 @@ public class CharacterStats : MonoBehaviour
                     scoreManager.AddScore(5);
                 }
 
-                if (healthRock != null)
+                /*if (healthRock != null)
                 {
                     Instantiate(healthRock, transform.position, Quaternion.identity);
-                }
+                }*/
 
                 Destroy(gameObject);
             }

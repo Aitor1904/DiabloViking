@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -42,7 +43,6 @@ public class PlayerController : MonoBehaviour
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             hasHit = Physics.Raycast(ray, out hit, 1000f, whatIsGround);
-
             if (hasHit)
             {
                 mover.Move(hit.point);
